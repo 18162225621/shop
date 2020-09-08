@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by 文辉 on 2017/7/27.  ssm必须要掌握1111
+ * Created by 文辉 on 2017/7/27.  ssm必须要掌握   111122
  */
 @Controller
 @RequestMapping("/admin/activity")
