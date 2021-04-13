@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="  
+           http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/cache 
+           http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+           
+           
+    <context:annotation-config />
+	<context:component-scan base-package="com" />
+	<!--此bean告诉Spring去哪找数据库的配置信息,因为有此Bean才出现下面用${}标记来取变量的语句-->
+	<bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/db.properties</value>	
+				<value>classpath:config/teammates.properties</value>
+			</list>
+		</property>
+	</bean>
+  
+	<!--配置一个数据源,根据上面propertyConfig指定的locations去找数据库连接的配置信息-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="initialSize" value="${jdbc.initialSize}"></property>
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}"></property>
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"></property>
+		<property name="logAbandoned" value="${jdbc.logAbandoned}"></property>
+		<property name="validationQuery" value="${jdbc.validationQuery}"></property>
+	</bean> 
+	
+	<bean id="searchIndexSynService" class="com.jwzt.datagener.service.impl.SearchIndexSynService">
+		<property name="teamMates" value="${synchronize.teamMates}"/>
+		<property name="indexStoreDirectory" value="${synchronize.indexStoreDirectory}"/>
+		<property name="createIndexByMyself" value="${synchronize.createIndexByMyself}"/>
+	</bean>
+   
+
+	<!--根据dataSource和configLocation创建一个SqlMapClient-->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:config/sql-map-config.xml</value>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	
+	<!--DAO-->
+	<bean id="nodeNewDao" class="com.jwzt.datagener.dao.impl.NodeNewImpl">
+		<property name="sqlMapClient" >
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="systemParamDao" class="com.jwzt.datagener.dao.impl.SystemParamImpl">
+		<property name="sqlMapClient" >
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
+	
+	<!-- service -->
+	<bean id="allAssetMgr" class="com.jwzt.datagener.service.impl.AllAssetMgr"></bean>
+	<bean id="incrementMgr" class="com.jwzt.datagener.service.impl.IncrementMgr"></bean>
+	<bean id="onLineService" class="com.jwzt.datagener.service.impl.OnLineServiceImpl"></bean>
+	<bean id="offLineService" class="com.jwzt.datagener.service.impl.OffLineServiceImpl"></bean>
+	<bean id="nodeNewService" class="com.jwzt.datagener.service.impl.NodeNewServiceImpl"></bean>
+	<bean id="systemParamService" class="com.jwzt.datagener.service.impl.SystemParamServiceImpl"></bean>
+	
+
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<baidu_types>
+    <baiDuType  nodeName="vip-vip影视"    id="194962"  value="电影"></baiDuType>
+    <baiDuType  nodeName="vip-奥斯卡经典"   id="189320"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-院线大片"    id="139328"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-网络大电影"   id="147714"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-沙发院线"    id="147708"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-3d电影"     id="139344"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-4k电影"     id="139341"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-杜比电影"    id="139335"  value="电影"></baiDuType>
+	<baiDuType  nodeName="飞狐-电影"       id="146934"  value="电影"></baiDuType>
+	<baiDuType  nodeName="优酷-电影"       id="177625"  value="电影"></baiDuType>
+	<baiDuType  nodeName="vip-vip剧集"    id="194956"  value="电视剧"></baiDuType>
+	<baiDuType  nodeName="飞狐-电视剧"      id="146942"  value="电视剧"></baiDuType>
+	<baiDuType  nodeName="飞狐-烧脑美剧"     id="149202"  value="电视剧"></baiDuType>
+	<baiDuType  nodeName="优酷-电视剧"      id="177628"  value="电视剧"></baiDuType>
+	<baiDuType  nodeName="vip-vip少儿"    id="194968"  value="少儿"></baiDuType>
+	<baiDuType  nodeName="vip-vip纪录片"   id="194950"  value="纪录片"></baiDuType>
+	<baiDuType  nodeName="飞狐-纪录片"      id="146966"  value="纪录片"></baiDuType>
+	<baiDuType  nodeName="优酷-纪录片"      id="177634"  value="纪录片"></baiDuType>
+	<baiDuType  nodeName="vip-vip综艺"    id="194944"  value="综艺"></baiDuType>
+	<baiDuType  nodeName="飞狐-综艺"       id="146950"  value="综艺"></baiDuType>
+	<baiDuType  nodeName="优酷-综艺"       id="177637"  value="综艺"></baiDuType>
+	<baiDuType  nodeName="飞狐-动漫"       id="146958"  value="动漫"></baiDuType>
+	<baiDuType  nodeName="优酷-动漫"       id="177631"  value="动漫"></baiDuType>
+	<baiDuType  nodeName="优酷-体育"       id="177640"  value="体育"></baiDuType>
+	<baiDuType  nodeName="优酷-资讯"       id="177643"  value="资讯"></baiDuType>
+	<baiDuType  nodeName="优酷-教育"       id="177646"  value="教育"></baiDuType>
+</baidu_types>

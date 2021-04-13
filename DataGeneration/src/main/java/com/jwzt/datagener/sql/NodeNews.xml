@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!--这是POJO映射文件的根元素-->
+<sqlMap namespace="NodeNews">
+	
+	<typeAlias alias="nodeNews" type="com.jwzt.datagener.model.NodeNews"/>
+
+	<select id="getAllNodeNews" resultClass="nodeNews">
+		select * from node_news
+	</select>
+	
+	<select id="getNodeNews" resultClass="nodeNews">
+		select * from node_news where newsId = #newsId# and nodeId = #nodeId#
+	</select>
+
+	<select id="getOnLine" resultClass="nodeNews" parameterClass="nodeNews">
+		SELECT * FROM node_news where newsId = #newsId# and status = 1 and inresultpage =1
+	</select>
+	
+	<select id="getNodeNewsByNodeId" resultClass="nodeNews" parameterClass="nodeNews">
+		SELECT * FROM node_news where nodeId = #nodeId#
+	</select>
+	
+	<select id="getOnLineColumn" resultClass="java.lang.Integer" parameterClass="nodeNews">
+		SELECT COUNT(*) FROM node_news where nodeId = #nodeId# and status = 1
+	</select>
+
+	<insert id="addNodeNew" parameterClass="nodeNews" >
+		INSERT INTO node_news (newsId,nodeId,status,inresultpage,onlinetime,offlinetime)
+		        VALUES(#newsId#,#nodeId#,#status#,#inresultpage#,#onlinetime#,#offlinetime#)
+	</insert>
+
+    <update id="updateStatus" parameterClass="nodeNews">
+         UPDATE node_news
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="status">
+	         status = #status# 
+			</isNotNull>	
+			<isNotNull prepend="," property="offlinetime">
+	         offlinetime = #offlinetime# 
+			</isNotNull>					
+		</dynamic> 
+	       WHERE newsId=#newsId# and nodeId=#nodeId#
+	</update>
+
+	<update id="updateInresultpage" parameterClass="nodeNews">
+         UPDATE node_news
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="inresultpage">
+	         inresultpage = #inresultpage#
+			</isNotNull>						
+		</dynamic> 
+	       WHERE newsId=#newsId# and nodeId=#nodeId#
+	</update>
+
+</sqlMap>

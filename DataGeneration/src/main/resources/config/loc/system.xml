@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+
+	<!-- 系统配置 nodeXml="/home/cmsuploader/html/xml303/nodeXml/303.xml D:\TV\xml303\nodeXml 
+	D:/TV/xml303/nodeXml/303.xml" -->
+	<system-config
+		nodeXml="D:/test/xml303/nodeXml/303.xml"
+		threadInterval="1"
+		analyzer="1"
+		nodes=""
+		notSearchNodes="191261"
+		freePpvId="999992"
+		picHttp="http://112.45.191.13"
+		clearCache="1"
+		clearIncrecement = "90"
+		domain = ""
+		picLocation = "xml"
+		indexPath="D:/index"
+		threadDataTime="2"
+		partner = "sony_huashu"
+		provider = "huashu"
+		key = "3Ep1K|tnwjxlgozh"
+		baiDuUrl= "http://127.0.0.1/duertv/data/push"
+		varietyShellNodeId = "182815"
+		module="2"
+		sendinfo="D:/index"
+		send_all="all"
+		send_increment="increment"
+		widgetUrl="http://112.45.191.13/XmlData_ZW4/wiget.jsp?widget="
+	/>
+	<!--
+		参数说明：
+		nodeXml:栏目xml的地址，如：D:/www225/xml236/nodeXml/236.xml
+		threadInterval:扫描xml时间间隔 (分)
+		analyzer:分词器选择: 0：自带的分词器，1：庖丁分词器，2：IKAnalyzer3.1.6，3：mmseg4j-1.8，4：JE分词器 ，最好选自带的
+		nodes:需要建立索引的栏目，如果有子孙栏目，则系统会自动包含它的子孙栏目，如果有多个id请以#隔开,当为空时表示所有栏目
+		notSearchNodes：建立了索引，能通过id搜到，但在搜索界面不能被搜到的栏目id，如果有子栏目，系统会包含它的子栏目，如果有多个id请以#隔开,当为空时表示所有栏目
+		freePpvId：免费的ppvId
+		picHttp：图片的http前缀，图片访问的是picXml里面的图片,以"http://"开头，结尾不要带"/"
+		clearCache：多长时间清除一下视频节目缓存，单位：小时 ，默认1小时 
+		clearIncrecement:保留多少天之内的增量节目
+		domain:加在播放串后面的域名，如：html5-epg.wasu.tv（http://xxx.com/xxx.ts?domain=xxx），提供给思华cncms用
+		module:华数播放串的加密模式，可取1或2或其他数字
+		picLocation: 图片的位置在哪：可取值xml、epg，xml表示从xml目录里取，epg表示从epg目录取图片，不配置时默认从epg里取
+		partner :"sony_huashu" 固定值，百度提供的值
+		provider: 固定值 是huashu
+		key :"3Ep1K|tnwjxlgozh"  固定值，百度提供的值
+		indexPath : 索引存放目录
+		baiDuUrl : 百度方接口地址 正式地址：http://duertv.baidu.com/duertv/data/push
+		varietyShellNodeId :综艺壳存放的栏目id
+		module : 华数加密版本  和cs2.0保持一致
+	 -->
+	 <baidu_config>
+	 	<channels>
+	 		<channel name="home"            rootNodeId="0" />
+			<channel name="movie"           rootNodeId="77258" />
+			<channel name="series"          rootNodeId="77277" />
+			<channel name="children"        rootNodeId="77634" />
+			<channel name="record"          rootNodeId="77735" />
+			<channel name="variety"         rootNodeId="77413" />
+			<channel name="news"            rootNodeId="77294" />
+			<channel name="sports"          rootNodeId="77360" />
+			<channel name="music"           rootNodeId="78431" />
+			<channel name="education"       rootNodeId="0" />
+			<channel name="family"          rootNodeId="77398" />
+			<channel name="english"         rootNodeId="118600" />
+			<channel name="female"          rootNodeId="101307" />	
+			<channel name="top"             rootNodeId="0" />
+			<channel name="vip"             rootNodeId="139326" />
+            <channel name="sohu"            rootNodeId="146926" />
+            <channel name="game"            rootNodeId="0"     />
+	        <channel name="pet"             rootNodeId="170731"/>
+	        <channel name="comic"           rootNodeId="173322" />
+		    <channel name="youku"           rootNodeId="0" />
+		    <channel name="chinablue"       rootNodeId="176998" />
+	 	</channels>
+	 </baidu_config>
+</system>

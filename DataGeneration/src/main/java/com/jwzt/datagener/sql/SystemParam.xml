@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!--这是POJO映射文件的根元素-->
+<sqlMap namespace="SystemParam">
+	
+ 	<typeAlias alias="systemParam" type="com.jwzt.datagener.model.SystemParam"/>
+
+	<select id="getIncrementVersion" resultClass="systemParam">
+		SELECT * from system_param where param_name = 'incrementVersion'
+	</select>
+	
+	<select id="getOpenAllAsset" resultClass="systemParam">
+		SELECT * from system_param WHERE param_name = 'openAllAsset'
+	</select>
+
+	<update id="updateParamValue" parameterClass="systemParam">
+         UPDATE system_param
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="param_value">
+	         param_value = #param_value#
+			</isNotNull>						
+		</dynamic> 
+	       WHERE param_name=#param_name#
+	</update>
+</sqlMap>
